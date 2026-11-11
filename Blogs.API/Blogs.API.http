@@ -1,0 +1,78 @@
+@Blogs.API_HostAddress = http://localhost:5298
+
+### Seed the database with initial data
+GET {{Blogs.API_HostAddress}}/api/SeedDb
+
+### ---------------- TAGS ----------------
+
+### Get all tags
+GET {{Blogs.API_HostAddress}}/api/Tags
+Accept: application/json
+
+### Get tag by id
+GET {{Blogs.API_HostAddress}}/api/Tags/1
+Accept: application/json
+
+### Add tag
+POST {{Blogs.API_HostAddress}}/api/Tags
+Content-Type: application/json
+
+{
+  "name": "Science"
+}
+
+### Update tag
+PUT {{Blogs.API_HostAddress}}/api/Tags
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "Science & Nature"
+}
+
+### Delete tag
+DELETE {{Blogs.API_HostAddress}}/api/Tags/6
+
+### ---------------- BLOGS ----------------
+
+### Get all blogs
+GET {{Blogs.API_HostAddress}}/api/Blogs
+Accept: application/json
+
+### Get blog by id
+GET {{Blogs.API_HostAddress}}/api/Blogs/1
+Accept: application/json
+
+### Add blog
+POST {{Blogs.API_HostAddress}}/api/Blogs
+Content-Type: application/json
+
+{
+  "title": "My First Blog",
+  "content": "Hello world from the Blogs microservice!",
+  "rating": 3.5,
+  "publishDate": "2026-11-11T12:00:00",
+  "isArchived": false,
+  "userName": "admin",
+  "userId": 1,
+  "tagIds": [1, 2]
+}
+
+### Update blog
+PUT {{Blogs.API_HostAddress}}/api/Blogs
+Content-Type: application/json
+
+{
+  "id": 5,
+  "title": "My First Blog (Updated)",
+  "content": "Updated content.",
+  "rating": 4,
+  "publishDate": "2026-11-11T12:00:00",
+  "isArchived": true,
+  "userName": "admin",
+  "userId": 1,
+  "tagIds": [3]
+}
+
+### Delete blog
+DELETE {{Blogs.API_HostAddress}}/api/Blogs/5
